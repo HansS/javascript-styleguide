@@ -10,8 +10,8 @@ This styleguide covers the usage of Javascript under these circumstances:
 
 1. AngularJS
 2. Browserify
-3. ES6 front-end and back-end
-4. NodeJS back-end
+3. ES2015 front-end and back-end
+4. NodeJS back-end 4.x+
 
 With the ability to use ReactJS when necessary.
 
@@ -23,13 +23,70 @@ Other styleguides that we drew inspiration from:
 
 ###Table of Contents
 
-1. Modularity
-
+1. Javascript semantics 
+2. Modularity
 
 ##Content
 
 **Note** I will be using the words "component" and "module" interchangeably.
 
+###Javascript Semantics
+
+This section details the codestyle for basic Javascript no matter where it's used. It should be assumed that ES2015 is always ready and available.
+
+**1. Whitespace and semicolons**
+
+Whitespace should be used sparingly and only when necessary. Code should be indented by 2 spaces and semicolons should always be used. One newline at a time is recommended and there should be no instances of multiple newlines.
+
+```js
+//wrong way
+var test1 = 0
+var testObj = {
+  key: val
+}
+var test2 = 0
+
+
+
+var sayHello = function() {
+  console.log('Hello')
+}
+```
+Instead, use one newline between logical blocks of code. Functions and other blocks of code (if/else, switch, multiline objects) should always have one new line below declarations and often above as well; however, variables and imperative code. There should also be a newline above a final `return` statement. Early returns do not need to abide by that rule.
+
+```
+//the right way
+var isFlagged = false;
+var isNumber = false;
+var config = {
+  
+}; //no newline above
+
+//newline above and below
+function pickNumber() {
+  var numbers = [];
+  
+  return function() {
+    var num = Math.rand();
+    numbers.push(Math.rand());
+    
+    return num;
+  }; //semicolon
+} //no semicolon
+
+```
+
+**2. Variable declarations**
+
+Variables should be declared one-per-line except when using deconstruction. Each variable
+
+```js
+//bad way
+var test = 1, test2 = 2, test3 = 3;
+
+//no semicolon
+var test = 1
+```
 
 ###Modularity
 
